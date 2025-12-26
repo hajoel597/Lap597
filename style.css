@@ -1,0 +1,466 @@
+body,
+header,
+footer {
+    margin: 0;
+}
+
+body {
+    background-color: #f8f5f2;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+#wpadminbar {
+    display: none;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.author {
+    color: inherit;
+    text-decoration: none;
+}
+
+.category,
+.title,
+.excerpt,
+.date {
+    margin: 0;
+    width: 100%;
+}
+
+.category a {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+}
+
+.title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.title a:hover {
+    text-decoration: underline;
+}
+
+
+.author img {
+    width: 100%;
+    height: 100%;
+}
+
+.author-name {
+    text-align: center;
+}
+
+.moblie {
+    display: none;
+}
+
+/*header*/
+header {
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 3vw;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.logo {
+    font-family: 'Stardos Stencil', sans-serif;
+    color: #1A1C1E;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    mix-blend-mode: multiply;
+    filter: contrast(1.1) brightness(1.1);
+    font-size: 6vh;
+    color: #222;
+    text-decoration: none;
+
+}
+
+
+.nav-down {
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+    z-index: 999;
+}
+
+.nav-up {
+    pointer-events: none;
+    transform: translateY(-100%);
+    visibility: hidden;
+}
+
+
+.panel-open,
+.panel-close {
+    height: 6vh;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.panel-open.material-symbols-outlined,
+.panel-close.material-symbols-outlined {
+    font-size: 6vh;
+}
+
+.panel {
+    position: fixed;
+    height: 100vh;
+    background-color: #F6F8F6;
+    width: 50%;
+    z-index: 999;
+    right: 0;
+    transition: transform 0.5s;
+    overflow: hidden;
+    top: 0;
+}
+
+.open {
+    pointer-events: auto;
+    transform: translateX(0);
+    visibility: visible;
+    overflow-y: scroll;
+}
+
+.close {
+    pointer-events: none;
+    transform: translateX(100%);
+    visibility: hidden;
+}
+
+.panel-header {
+    height: 10vh;
+    min-width: 100%;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 3vw;
+    align-items: center;
+}
+
+.panel-content {
+    padding: 0 3vw;
+}
+
+.panel-search {
+    height: 6vh;
+    margin-bottom: 4vh;
+    width: 100%;
+}
+
+.search-form {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 6vh;
+    box-sizing: border-box;
+}
+
+.panel-search-icon.material-symbols-outlined {
+    font-size: 6vh;
+    width: 6vh;
+    float: left;
+}
+
+.search-field {
+    float: left;
+    width: calc(100% - 6vh);
+    height: 6vh;
+    line-height: 6vh;
+    padding: 0 15px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2vh;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-field {
+    display: block;
+}
+
+.search-field::-webkit-search-decoration,
+.search-field::-webkit-search-cancel-button,
+.search-field::-webkit-search-results-button,
+.search-field::-webkit-search-results-decoration {
+    display: none;
+}
+
+.panel-menu {
+    margin-top: 5vh;
+    height: 45vh;
+    width: 100%;
+}
+
+.panel-menu-category {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.panel-menu-category li {
+    font-size: 5vh;
+    font-family: "BBH Bogle", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*main*/
+
+.home-list-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.home-list:nth-of-type(even) .home-list-container {
+    flex-direction: row-reverse;
+}
+
+.home-list-single-container,
+.home-list-muilt {
+    flex: 1;
+    width: 100%;
+}
+
+.home-list-single-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.home-list-single-container .image {
+    height: 100%;
+}
+
+.home-list-single-container .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #ffffff;
+    padding: 6rem 3rem 4rem;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    box-sizing: border-box;
+}
+
+
+.home-list-single-container .desc .meta {
+    flex: 0 1 70%;
+}
+
+.home-list-single-container .desc .meta .title {
+    font-size: 3rem;
+}
+
+.home-list-single-container .desc .meta .title a:hover {
+    text-decoration: underline;
+}
+
+
+.home-list-muilt {
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
+    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr);
+}
+
+.home-list-muilt-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 1vh;
+}
+
+.header {
+    width: 100%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-list-muilt-container .image {
+    height: 75%;
+    position: relative;
+}
+
+.home-list-muilt-container .image .category {
+    position: absolute;
+    bottom: 1rem;
+    padding-left: 1rem;
+    width: fit-content;
+}
+
+
+/*footer*/
+footer {
+    height: 20vh;
+    background-color: black;
+}
+
+/* 컨테이너: 배경 및 높이 제거, 중앙 정렬만 유지 */
+.pagination-wrap {
+    height: 20vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+/* 리스트: 불필요한 점(dots) 및 여백 제거 */
+.pagination-wrap ul.page-numbers {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* 항목: 내부 간격만 유지 */
+.pagination-wrap ul.page-numbers li {
+    margin: 5vh 2vh;
+    font-size: 3vh;
+}
+
+/* 텍스트/링크: 기본 링크 스타일 제거 및 간격 설정 */
+.pagination-wrap ul.page-numbers li a,
+.pagination-wrap ul.page-numbers li span {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    display: block;
+}
+
+/* 현재 페이지 표시 (필요 없으면 삭제 가능) */
+.pagination-wrap ul.page-numbers li span.current {
+    font-weight: bold;
+}
+
+
+.page-header {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
+    grid-template-rows: minmax(min-content, 1fr);
+}
+
+.page-header .desc {
+    padding: 3vh;
+    position: relative;
+}
+
+.page-header .desc .header {
+    padding-top: 20vh;
+}
+
+.page-header .footer {
+    position: absolute;
+    bottom: 5vh;
+    right: 3vh;
+}
+
+.page-text-wrap {
+    padding: 0 15%;
+    height: 100vh;
+}
+
+.page-text {
+    text-align: center;
+}
+
+.page-header .footer .author .author-name {
+    font-size: 2rem;
+}
+
+/*author.php*/
+
+.author-info-section {
+    margin-top: 20vh;
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-image {
+    height: 10vh;
+    width: 10vh;
+    aspect-ratio: 1 / 1;
+}
+
+.container {
+    display: flex;
+    height: max-content;
+    box-sizing: border-box;
+    padding: 0 5vh;
+    flex-wrap: wrap;
+}
+
+.container .home-list-muilt-container {
+    aspect-ratio: 9 / 16;
+    width: 25%;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .home-list-container {
+        height: 200vh;
+        flex-direction: column;
+    }
+
+    .home-list:nth-of-type(even) .home-list-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .home-list-muilt {
+        grid-template-columns: minmax(min-content, 1fr);
+        grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr);
+    }
+
+    .home-list-muilt-container {
+        display: flex;
+    }
+
+    .home-list-muilt-container .image {
+        height: 100%;
+        position: relative;
+        width: 50%;
+    }
+
+    .home-list-muilt-container .image .category {
+        position: absolute;
+        bottom: 1rem;
+        padding-left: 1rem;
+        width: fit-content;
+    }
+
+    .home-list-muilt-container .desc {
+        height: 100%;
+        width: 50%;
+    }
+}
