@@ -310,6 +310,7 @@ header {
     min-height: 0;
     align-items: center;
     justify-items: center;
+    background-color: #a7c5a7;
 }
 
 .header {
