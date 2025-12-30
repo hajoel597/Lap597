@@ -5,11 +5,11 @@
     </div>
     <div class="desc">
         <div class="header">
+            <h4 class="category moblie"><?php the_category( ', ' ); ?></h4>
             <h1 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         </div>
         <div class="footer">
             <div class="meta">
-                <h4 class="category moblie"><?php the_category( ', ' ); ?></h4>
                 <?php
                 $excerpt = get_the_excerpt(); 
 
