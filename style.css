@@ -7,14 +7,13 @@ footer {
 body {
     background-color: #f8f5f2;
     background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 #wpadminbar {
     display: none;
 }
 
-.image {
+.image img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -294,6 +293,14 @@ header {
     padding: 1vh;
 }
 
+.sub-preparation-message {
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 0;
+    align-items: center;
+    justify-items: center;
+}
+
 .header {
     width: 100%;
 }
@@ -358,12 +365,27 @@ footer {
     font-weight: bold;
 }
 
-
+/* single.php */
 .page-header {
     height: 100vh;
     display: grid;
     grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
     grid-template-rows: minmax(min-content, 1fr);
+}
+
+.page-header .image {
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.placeholder-image {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .page-header .desc {
@@ -375,10 +397,27 @@ footer {
     padding-top: 20vh;
 }
 
+.page-header .desc .header .title {
+    font-size: 5rem;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 5px;
+}
+
 .page-header .footer {
     position: absolute;
     bottom: 5vh;
     right: 3vh;
+}
+
+.page-header .footer .author .author-photo {
+    height: 8vh;
+    width: 8vh;
+    justify-self: center;
+}
+
+.page-header .footer .author .author-name {
+    font-size: 1.5rem;
 }
 
 .page-text-wrap {
@@ -390,9 +429,9 @@ footer {
     text-align: center;
 }
 
-.page-header .footer .author .author-name {
-    font-size: 2rem;
-}
+
+
+
 
 /*author.php*/
 
@@ -486,14 +525,6 @@ footer {
         height: 160vh;
         grid-template-rows: repeat(4, 1fr);
         grid-template-columns: 1fr;
-    }
-
-    .sub-preparation-message {
-        margin: 0;
-        box-sizing: border-box;
-        min-height: 0;
-        align-items: center;
-        justify-items: center;
     }
 
     .home-list-muilt-container {

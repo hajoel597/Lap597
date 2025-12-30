@@ -18,7 +18,7 @@ get_header(); ?>
         $categories = get_the_category(); // 변수명을 $categories (복수형)로 변경하여 혼동 방지
         $date_format = get_the_date();
         $author_name = get_the_author();
-        $author_photo_url = get_avatar_url( get_the_author_meta( 'ID' ), array('size' => 96) ); // 작성자 아바타 URL 가져오기
+        $author_photo_url = get_avatar_url( get_the_author_meta( 'ID' ), array('size' => 40) ); // 작성자 아바타 URL 가져오기
         
         // 워드프레스의 '요약' 필드 내용을 가져옵니다.
         $excerpt = get_post_field( 'post_excerpt', get_the_ID() );
@@ -38,10 +38,8 @@ get_header(); ?>
     </div>
     <div class="desc">
         <div class="header">
-            <h1 class="title"><?php the_title(); // 게시물 제목 ?></h1>
-            <div class="meta">
-                <h4 class="category">
-                    <?php 
+            <h4 class="category">
+                <?php 
                         // 카테고리가 비어있지 않고 오류가 없을 경우, 첫 번째 카테고리 이름 출력
                         if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
                             echo esc_html( $categories[0]->cat_name ); // 배열의 첫 번째 요소 [0]에 접근
@@ -49,8 +47,9 @@ get_header(); ?>
                             echo '카테고리 없음';
                         }
                         ?>
-                </h4>
-
+            </h4>
+            <h1 class="title"><?php the_title(); // 게시물 제목 ?></h1>
+            <div class="meta">
                 <!-- '요약' 필드 출력: 비어있을 경우 사용자 지정 문구 표시 -->
                 <p class="excerpt">
                     <?php 
