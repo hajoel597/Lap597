@@ -38,7 +38,7 @@
                     <li>Product</li>
                     <li>Advertisement</li>
                     <li>Eta</li>
-                    <li>Editor's Pick</li>
+                    <li>Editorial</li>
                 </ul>
             </div>
         </div>

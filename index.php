@@ -2,34 +2,32 @@
 
 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 $sections_per_page = 4; // 한 페이지에 표시할 섹션 수
-$posts_per_section = 5; // 한 섹션당 게시물 수 (1 main + 4 sub)
-
+$sub_per_section = 2;   // 한 섹션당 표시할 서브 게시물 수 (기존 4에서 2로 변경)
 
 // 1. 현재 페이지의 main 게시물 가져오기
 $args_main = array(
     'posts_per_page'         => $sections_per_page,
-    'paged'                  => $paged, // 현재 페이지에 해당하는 메인 게시물만 가져옴
+    'paged'                  => $paged,
     'tag'                    => 'main',
     'orderby'                => 'date',
     'order'                  => 'DESC',
     'post_status'            => 'publish',
-    // 'no_found_rows'는 페이지네이션 계산을 위해 제거
 );
 $main_query = new WP_Query( $args_main );
 $main_posts_current = $main_query->posts;
 
-// 현재 페이지의 main 게시물 ID를 수집합니다.
 $used_post_ids = wp_list_pluck( $main_posts_current, 'ID' );
 
-// 2. 현재 페이지의 sub 게시물 가져오기 (main에서 사용된 ID 제외)
+// 2. 현재 페이지의 sub 게시물 가져오기
 $args_sub = array(
-    'posts_per_page'         => $sections_per_page * 4, // 필요한 수량만큼만 가져옴
+    // 섹션당 2개씩 가져오도록 계산 (4 섹션 * 2 = 총 8개)
+    'posts_per_page'         => $sections_per_page * $sub_per_section, 
     'tag'                    => 'sub', 
     'orderby'                => 'date',
     'order'                  => 'DESC',
-    'post__not_in'           => $used_post_ids, // main에서 사용된 ID 제외
+    'post__not_in'           => $used_post_ids,
     'post_status'            => 'publish',
-    'no_found_rows'          => true, // 성능 최적화
+    'no_found_rows'          => true,
     'update_post_meta_cache' => false,
 );
 $sub_query = new WP_Query( $args_sub );
@@ -47,14 +45,16 @@ if ($main_query->have_posts()) {
         <?php get_template_part( 'template-parts/content', 'main' ); ?>
         <div class="home-list-muilt">
             <?php
-                    for ($j = 0; $j < 4; $j++) {
+                    // 반복 횟수를 4에서 2($sub_per_section)로 변경
+                    for ($j = 0; $j < $sub_per_section; $j++) {
                         if (isset($sub_posts_current[$sub_index])) {
                             global $post; 
                             $post = $sub_posts_current[$sub_index];
                             setup_postdata($post);
                             get_template_part( 'template-parts/content', 'sub' );
                         } else {
-                            echo '<p class="sub-preparation-message">서브 게시물 준비중</p>';
+                            // 서브 게시물이 부족할 경우 메시지 출력 (선택 사항)
+                            echo '<div class="home-list-muilt-container">서브 게시물 준비중</div>';
                         }
                         $sub_index++;
                     }
@@ -74,14 +74,14 @@ wp_reset_postdata(); ?>
 <div class="pagination-wrap">
     <?php
     $total_pages = $main_query->max_num_pages;
-        $pagination_html = paginate_links( array(
+    $pagination_html = paginate_links( array(
         'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
         'format'    => '?paged=%#%',
         'current'   => $paged,
-        'total'     => $total_pages == 0 ? 1 : $total_pages, // 총 페이지 수 전달
+        'total'     => $total_pages == 0 ? 1 : $total_pages,
         'prev_text' => __( '«' ),
         'next_text' => __( '»' ),
-        'type'      => 'list', // <ul><li> 형태로 출력
+        'type'      => 'list',
         'mid_size'  => 0,
         'end_size'  => 1,
     ) );

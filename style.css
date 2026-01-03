@@ -17,11 +17,6 @@ footer {
 
 body {
     background-color: #f8f5f2;
-    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
-}
-
-#wpadminbar {
-    display: none;
 }
 
 .image img {
@@ -293,7 +288,7 @@ header {
 .home-list-muilt {
     display: grid;
     grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
-    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr);
+    grid-template-rows: minmax(min-content, 1fr);
 }
 
 .home-list-muilt-container {
@@ -304,13 +299,13 @@ header {
     padding: 1vh;
 }
 
-.sub-preparation-message {
-    margin: 0;
-    box-sizing: border-box;
-    min-height: 0;
-    align-items: center;
-    justify-items: center;
-    background-color: #a7c5a7;
+.home-list-muilt-container:nth-child(1) {
+    padding-top: 15vh;
+}
+
+
+.home-list-muilt-container:nth-child(2) {
+    padding-bottom: 15vh;
 }
 
 .header {
@@ -377,6 +372,7 @@ footer {
     font-weight: bold;
 }
 
+
 /* single.php */
 .page-header {
     height: 100vh;
@@ -433,8 +429,8 @@ footer {
 }
 
 .page-text-wrap {
-    padding: 0 15%;
-    height: 100vh;
+    padding: 5% 15% 15% 0;
+    min-height: 100vh;
 }
 
 .page-text {
