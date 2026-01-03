@@ -284,7 +284,6 @@ header {
     text-decoration: underline;
 }
 
-
 .home-list-muilt {
     display: grid;
     grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
@@ -525,20 +524,28 @@ footer {
 
 @media screen and (max-width: 767px) {
     .home-list-container {
-        height: 260vh;
+        height: 200vh;
     }
 
     .home-list-muilt {
         display: grid;
-        height: 160vh;
-        grid-template-rows: repeat(4, 1fr);
+        height: 100vh;
+        grid-template-rows: repeat(2, 1fr);
         grid-template-columns: 1fr;
     }
 
     .home-list-muilt-container {
         display: flex;
         height: 100%;
-        min-height: 0
+        min-height: 0;
+    }
+
+    .home-list-muilt-container:nth-child(1) {
+        padding-top: 1vh;
+    }
+
+    .home-list-muilt-container:nth-child(2) {
+        padding-bottom: 1vh;
     }
 
     .home-list-muilt-container .image {
