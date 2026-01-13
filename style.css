@@ -36,6 +36,7 @@ body {
 .date {
     margin: 0;
     width: 100%;
+    padding-bottom: 0.2vh;
 }
 
 .category a {
@@ -57,6 +58,7 @@ body {
 .author img {
     width: 100%;
     height: 100%;
+    padding-bottom: 0.2vh;
 }
 
 .author-name {
@@ -299,12 +301,12 @@ header {
 }
 
 .home-list-muilt-container:nth-child(1) {
-    padding-top: 15vh;
+    padding-top: 20vh;
 }
 
 
 .home-list-muilt-container:nth-child(2) {
-    padding-bottom: 15vh;
+    padding-bottom: 20vh;
 }
 
 .header {
@@ -326,6 +328,10 @@ header {
     bottom: 1rem;
     padding-left: 1rem;
     width: fit-content;
+}
+
+.home-list-muilt-container .desc {
+    padding-top: 1vh;
 }
 
 
