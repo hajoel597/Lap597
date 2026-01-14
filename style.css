@@ -86,7 +86,7 @@ header {
 
 .logo {
     font-family: 'Stardos Stencil', sans-serif;
-    color: #1A1C1E;
+    color: white;
     font-size: 4rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -94,7 +94,6 @@ header {
     mix-blend-mode: multiply;
     filter: contrast(1.1) brightness(1.1);
     font-size: 6vh;
-    color: #222;
     text-decoration: none;
 
 }
@@ -124,6 +123,10 @@ header {
 .panel-open.material-symbols-outlined,
 .panel-close.material-symbols-outlined {
     font-size: 6vh;
+}
+
+.panel-open.material-symbols-outlined {
+    color: white;
 }
 
 .panel {
@@ -250,8 +253,10 @@ header {
 
 .home-list-single-container {
     max-height: 100vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
+    background-color: black;
 }
 
 .home-list-single-container .image {
@@ -512,15 +517,18 @@ footer {
         position: relative;
     }
 
+    .home-list-container {
+        flex-direction: column;
+    }
+
+    .home-list-muilt {
+        height: 100vh;
+    }
+
     .home-list-muilt-container .author {
         position: absolute;
         bottom: 0;
         right: 0;
-    }
-
-    .home-list-container {
-        height: 200vh;
-        flex-direction: column;
     }
 
     .home-list:nth-of-type(even) .home-list-container {
@@ -530,28 +538,31 @@ footer {
 
 @media screen and (max-width: 767px) {
     .home-list-container {
-        height: 200vh;
+        height: 180vh;
     }
 
     .home-list-muilt {
         display: grid;
-        height: 100vh;
+        height: 80vh;
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: 1fr;
     }
 
     .home-list-muilt-container {
         display: flex;
-        height: 100%;
+        height: 40vh;
         min-height: 0;
+
     }
 
     .home-list-muilt-container:nth-child(1) {
-        padding-top: 1vh;
+        padding-top: 5vh;
+        padding-bottom: 2.5vh;
     }
 
     .home-list-muilt-container:nth-child(2) {
-        padding-bottom: 1vh;
+        padding-top: 2.5vh;
+        padding-bottom: 5vh;
     }
 
     .home-list-muilt-container .image {
@@ -570,5 +581,7 @@ footer {
     .home-list-muilt-container .desc {
         height: 100%;
         width: 50%;
+        box-sizing: border-box;
+        padding: 0;
     }
 }
