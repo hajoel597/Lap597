@@ -1,22 +1,20 @@
 <?php get_header(); ?>
-
-<div class="container">
-    <div class="search-header" style="margin-bottom: 30px;">
-        <h1 class="search-title">
-            <?php 
+<div class="search-header" style="margin-bottom: 30px;">
+    <h1 class="search-title">
+        <?php 
             /* 검색어 출력 */
             printf( esc_html__( '"%s"에 대한 검색 결과', 'textdomain' ), '<span>' . get_search_query() . '</span>' ); 
             ?>
-        </h1>
-    </div>
-
+    </h1>
+</div>
+<div class="container">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div class="home-list-muilt-container">
         <div class="image">
             <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'medium' ); } ?>
             </a>
-            <div class="category-link">
+            <div class="category">
                 <?php the_category( ', ' ); ?>
             </div>
         </div>

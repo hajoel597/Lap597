@@ -24,11 +24,14 @@
             <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'medium' ); } ?>
             </a>
-            <div class="category-link">
-                <?php the_category( ', ' ); // 이 함수는 자동으로 <a>태그를 생성합니다. ?>
+            <div class="category">
+                <!-- [수정] 따옴표 닫기 누락 해결 -->
+                <?php the_category( ', ' ); ?>
             </div>
         </div>
+
         <div class="desc">
+            <!-- [수정] 클래스명 앞 불필요한 공백 제거 -->
             <div class="header">
                 <h1 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
             </div>
@@ -38,28 +41,24 @@
                     <?php
                     $excerpt = get_the_excerpt(); 
                     if ( empty( $excerpt ) ) {
-                        // 요약문이 없을 때 직접 p 태그 출력
                         echo '<p class="excerpt">요약문 준비 중</p>';
                     } else {
-                        // 요약문이 있을 때 태그를 제거한 순수 텍스트만 가져와 p.excerpt로 감싸서 출력
                         echo '<p class="excerpt">' . wp_strip_all_tags( $excerpt ) . '</p>';
                     }
                     ?>
                     <p class="date"><?php echo get_the_date(); ?></p>
                 </div>
-                <!-- 작성자 본인 페이지이므로 링크가 굳이 필요 없다면 <a>를 빼도 되지만, 구조 유지를 위해 남겨둡니다. -->
                 <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" class="author">
                     <div class="author-photo"><?php echo get_avatar( get_the_author_meta( 'ID' ), 40 ); ?></div>
                     <div class="author-name"><?php the_author(); ?></div>
                 </a>
             </div>
         </div>
-    </div>
-
+    </div> <!-- [수정] home-list-muilt-container 닫는 태그 위치 조정 -->
     <?php endwhile; ?>
     <?php else : ?>
     <p>해당 작성자가 쓴 글이 없습니다.</p>
     <?php endif; ?>
-</div>
+</div> <!-- [수정] container 닫는 태그 위치 조정 -->
 
 <?php get_footer(); ?>

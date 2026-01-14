@@ -3,11 +3,11 @@
         <a href="<?php the_permalink(); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'medium' ); } ?>
         </a>
-        <h4 class="category"><?php the_category( ', ' ); ?></h4>
+        <h4 class="pc category"><?php the_category( ', ' ); ?></h4>
     </div>
     <div class="desc">
         <div class="header">
-            <h4 class="category moblie"><?php the_category( ', ' ); ?></h4>
+            <h4 class="mobile category"><?php the_category( ', ' ); ?></h4>
             <h1 class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         </div>
         <div class="footer">

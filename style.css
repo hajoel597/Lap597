@@ -16,7 +16,7 @@ footer {
 }
 
 body {
-    background-color: #f8f5f2;
+    background-color: #ffffff;
 }
 
 .image img {
@@ -291,6 +291,15 @@ header {
     text-decoration: underline;
 }
 
+.home-list-single-container .author {
+    justify-self: center;
+}
+
+.home-list-single-container .author-photo {
+    width: 50px;
+    height: 50px;
+}
+
 .home-list-muilt {
     display: grid;
     grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
@@ -305,12 +314,20 @@ header {
     padding: 1vh;
 }
 
-.home-list-muilt-container:nth-child(1) {
+.pc {
+    display: block;
+}
+
+.mobile {
+    display: none;
+}
+
+.home-list .home-list-muilt-container:nth-child(1) {
     padding-top: 20vh;
 }
 
 
-.home-list-muilt-container:nth-child(2) {
+.home-list .home-list-muilt-container:nth-child(2) {
     padding-bottom: 20vh;
 }
 
@@ -339,6 +356,14 @@ header {
     padding-top: 1vh;
 }
 
+.home-list-muilt-container .author {
+    justify-self: center;
+}
+
+.home-list-muilt-container .author-photo {
+    width: 50px;
+    height: 50px;
+}
 
 /*footer*/
 footer {
@@ -439,17 +464,13 @@ footer {
 }
 
 .page-text-wrap {
-    padding: 5% 15% 15% 0;
+    padding: 5% 15% 5% 15%;
     min-height: 100vh;
 }
 
 .page-text {
     text-align: center;
 }
-
-
-
-
 
 /*author.php*/
 
@@ -474,12 +495,21 @@ footer {
     box-sizing: border-box;
     padding: 0 5vh;
     flex-wrap: wrap;
+    padding-top: 10vh;
 }
 
 .container .home-list-muilt-container {
     aspect-ratio: 9 / 16;
     width: 25%;
 }
+
+/*Search*/
+
+.search-header {
+    padding-top: 25vh;
+    text-align: center;
+}
+
 
 
 @media screen and (max-width: 1023px) {
@@ -505,11 +535,11 @@ footer {
         font-size: 2rem;
     }
 
-    .category {
+    .pc {
         display: none;
     }
 
-    .moblie {
+    .mobile {
         display: block;
     }
 
@@ -519,10 +549,7 @@ footer {
 
     .home-list-container {
         flex-direction: column;
-    }
-
-    .home-list-muilt {
-        height: 100vh;
+        height: 200vh;
     }
 
     .home-list-muilt-container .author {
@@ -534,6 +561,35 @@ footer {
     .home-list:nth-of-type(even) .home-list-container {
         flex-direction: column;
     }
+
+
+    .page-header {
+        height: 80vh;
+        display: grid;
+        grid-template-columns: minmax(min-content, 1fr);
+        grid-template-rows: 50vh 30vh;
+    }
+
+    .page-header .desc .header {
+        padding-top: 0vh;
+    }
+
+    .page-header .footer {
+        position: absolute;
+        bottom: 3vh;
+        right: 3vh;
+    }
+
+    .page-header .footer .author .author-photo {
+        height: 5vh;
+        width: 5vh;
+        justify-self: center;
+    }
+
+    .page-header .footer .author .author-name {
+        font-size: 1rem;
+    }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -552,15 +608,15 @@ footer {
         display: flex;
         height: 40vh;
         min-height: 0;
-
     }
 
-    .home-list-muilt-container:nth-child(1) {
+    .home-list .home-list-muilt-container:nth-child(1) {
         padding-top: 5vh;
         padding-bottom: 2.5vh;
     }
 
-    .home-list-muilt-container:nth-child(2) {
+
+    .home-list .home-list-muilt-container:nth-child(2) {
         padding-top: 2.5vh;
         padding-bottom: 5vh;
     }
@@ -583,5 +639,7 @@ footer {
         width: 50%;
         box-sizing: border-box;
         padding: 0;
+        padding-left: 2vh;
     }
+
 }
