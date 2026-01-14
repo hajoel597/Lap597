@@ -600,6 +600,10 @@ footer {
         height: 180vh;
     }
 
+    .home-list-single-container .desc {
+        padding: 6rem 0.8rem 5rem;
+    }
+
     .home-list-muilt {
         display: grid;
         height: 80vh;
