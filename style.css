@@ -28,6 +28,9 @@ body {
 .author {
     color: inherit;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .category,
