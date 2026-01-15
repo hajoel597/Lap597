@@ -35,9 +35,10 @@
             </div>
             <div class="panel-menu">
                 <ul class="panel-menu-category">
-                    <li>Product</li>
-                    <li>Advertisement</li>
-                    <li>Eta</li>
+                    <li>Ads & Campaigns</li>
+                    <li>New Drops / Launches</li>
+                    <li>Market Insights</li>
+                    <li>Tech & Innovation</li>
                     <li>Editorial</li>
                 </ul>
             </div>
