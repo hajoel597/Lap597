@@ -41,7 +41,7 @@ $sub_posts = $sub_query->posts;
     <?php 
         else : 
     ?>
-    <section class="section-main empty-main">
+    <section class="section-main">
         <div class="main-post-wrapper">
             <div class="main-title">
                 <h1 class="main-title-h1">Next Main Entry</h1>
