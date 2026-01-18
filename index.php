@@ -1,93 +1,80 @@
-<?php get_header(); 
-
-$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-$sections_per_page = 4; // 한 페이지에 표시할 섹션 수
-$sub_per_section = 2;   // 한 섹션당 표시할 서브 게시물 수 (기존 4에서 2로 변경)
-
-// 1. 현재 페이지의 main 게시물 가져오기
-$args_main = array(
-    'posts_per_page'         => $sections_per_page,
-    'paged'                  => $paged,
-    'tag'                    => 'main',
-    'orderby'                => 'date',
-    'order'                  => 'DESC',
-    'post_status'            => 'publish',
-);
-$main_query = new WP_Query( $args_main );
-$main_posts_current = $main_query->posts;
-
-$used_post_ids = wp_list_pluck( $main_posts_current, 'ID' );
-
-// 2. 현재 페이지의 sub 게시물 가져오기
-$args_sub = array(
-    // 섹션당 2개씩 가져오도록 계산 (4 섹션 * 2 = 총 8개)
-    'posts_per_page'         => $sections_per_page * $sub_per_section, 
-    'tag'                    => 'sub', 
-    'orderby'                => 'date',
-    'order'                  => 'DESC',
-    'post__not_in'           => $used_post_ids,
-    'post_status'            => 'publish',
-    'no_found_rows'          => true,
-    'update_post_meta_cache' => false,
-);
-$sub_query = new WP_Query( $args_sub );
-$sub_posts_current = $sub_query->posts;
-
-$sub_index = 0;
-
-if ($main_query->have_posts()) {
-    while ($main_query->have_posts()) {
-        $main_query->the_post();
-        ?>
-
-<section class="home-list">
-    <div class="home-list-container">
-        <?php get_template_part( 'template-parts/content', 'main' ); ?>
-        <div class="home-list-muilt">
-            <?php
-                    // 반복 횟수를 4에서 2($sub_per_section)로 변경
-                    for ($j = 0; $j < $sub_per_section; $j++) {
-                        if (isset($sub_posts_current[$sub_index])) {
-                            global $post; 
-                            $post = $sub_posts_current[$sub_index];
-                            setup_postdata($post);
-                            get_template_part( 'template-parts/content', 'sub' );
-                        } else {
-                            // 서브 게시물이 부족할 경우 메시지 출력 (선택 사항)
-                            echo '<div class="home-list-muilt-container">서브 게시물 준비중</div>';
-                        }
-                        $sub_index++;
-                    }
-                    ?>
-        </div>
-    </div>
-</section>
+<?php get_header(); ?>
 
 <?php
-    }
-} else {
-    echo '<p>표시할 게시물이 없습니다. 관리자 패널에서 게시물을 추가해주세요.</p>';
-}
+/**
+ * 1. 데이터 준비 로직
+ */
+$sets_per_page = 2; // 한 페이지에 2세트(총 6개) 노출
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
-wp_reset_postdata(); ?>
+// 메인 쿼리
+$main_query = new WP_Query(array(
+    'tag'            => 'main',
+    'posts_per_page' => $sets_per_page,
+    'paged'          => $paged,
+    'post_status'    => 'publish'
+));
+$main_posts = $main_query->posts;
 
-<div class="pagination-wrap">
-    <?php
-    $total_pages = $main_query->max_num_pages;
-    $pagination_html = paginate_links( array(
-        'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-        'format'    => '?paged=%#%',
-        'current'   => $paged,
-        'total'     => $total_pages == 0 ? 1 : $total_pages,
-        'prev_text' => __( '«' ),
-        'next_text' => __( '»' ),
-        'type'      => 'list',
-        'mid_size'  => 0,
-        'end_size'  => 1,
-    ) );
-    
-    echo $pagination_html;
+// 서브 쿼리 (메인 ID 제외)
+$sub_query = new WP_Query(array(
+    'tag'            => 'sub',
+    'posts_per_page' => $sets_per_page * 2,
+    'paged'          => $paged,
+    'post__not_in'   => wp_list_pluck($main_posts, 'ID'),
+    'post_status'    => 'publish'
+));
+$sub_posts = $sub_query->posts;
+?>
+
+<main class="site-main">
+    <?php 
+    for ( $i = 0; $i < $sets_per_page; $i++ ) : 
+        if ( isset($main_posts[$i]) ) :
+            $post = $main_posts[$i];
+            setup_postdata($post);
     ?>
-</div>
+    <section class="section-main">
+        <?php get_template_part('template-parts/main-post'); ?>
+    </section>
+    <?php endif; ?>
+    <section class="section-sub">
+        <?php 
+            for ( $j = $i * 2; $j < ($i * 2) + 2; $j++ ) :
+                if ( isset($sub_posts[$j]) ) :
+                    $post = $sub_posts[$j];
+                    setup_postdata($post);
+                    get_template_part('template-parts/sub-post');
+                else :
+            ?>
+        <div class="sub-post empty-post">
+            <div class="post-link-wrapper">
+                <div class="sub-title">
+                    <h1 class="sub-title-h1">Next Journal Entry</h1>
+                    <p class="excerpt">새로운 기록이 곧 업데이트될 예정입니다.</p>
+                    <p class="date"><?php echo date('Y.m.d'); ?></p>
+                </div>
+                <div class="sub-image">
+                    <div class="no-image-box">
+                        <span class="material-symbols-outlined">bid_landscape_disabled</span>
+                        <p>Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; endfor;?>
+    </section>
+    <?php endfor; wp_reset_postdata(); ?>
+    <div class="pagination-wrapper">
+        <?php 
+        echo paginate_links(array(
+            'total'   => $main_query->max_num_pages,
+            'current' => $paged,
+            'prev_text' => '<span class="material-symbols-outlined">chevron_left</span>',
+            'next_text' => '<span class="material-symbols-outlined">chevron_right</span>',
+        )); 
+        ?>
+    </div>
+</main>
 
 <?php get_footer(); ?>

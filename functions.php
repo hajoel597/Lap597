@@ -1,39 +1,22 @@
 <?php
+/**
+ * 테마의 기능을 설정하고 스타일/스크립트를 로드합니다.
+ */
 
-// ----------------------------------------------------
-// 테마 설정 및 썸네일 활성화
-// ----------------------------------------------------
-function mytheme_setup() {
-    // 테마에서 'post-thumbnails' (특성 이미지/썸네일) 지원 활성화
+function my_journal_theme_setup() {
+    // 1. 포스트 특성 이미지(썸네일) 기능 활성화
     add_theme_support( 'post-thumbnails' );
 
-    // 필요하다면 추가적인 이미지 사이즈 정의
-    // set_post_thumbnail_size( 150, 150, true ); // 기본 썸네일 크기 설정
-    // add_image_size( 'custom-large', 800, 600, true ); // 'custom-large' 이라는 새 이미지 크기 추가
+    // 2. 타이틀 태그 자동 생성
+    add_theme_support( 'title-tag' );
 }
-add_action( 'after_setup_theme', 'mytheme_setup' );
+add_action( 'after_setup_theme', 'my_journal_theme_setup' );
 
-
-// ----------------------------------------------------
-// 스크립트 및 스타일시트 등록
-// ----------------------------------------------------
-function mytheme_scripts() {
+function my_journal_scripts() {
+    // 3. style.css 파일을 워드프레스 방식(Enqueue)으로 로드
     wp_enqueue_style( 'main-style', get_stylesheet_uri() );
-    
-    // Google Fonts 아이콘 불러오기 (URL에 https:// 프로토콜 추가)
-    wp_enqueue_style( 'google-material-icons', 'fonts.googleapis.com', array(), null );
 
-    wp_enqueue_script( 'panel-script', get_template_directory_uri() . '/js/panel.js', array( 'jquery' ), '1.0.0', true );
-    wp_enqueue_script( 'header-script', get_template_directory_uri() . '/js/header.js', array( 'jquery' ), '1.0.0', true );
+    // 4. 구글 폰트 로드
+    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap', array(), null );
 }
-add_action( 'wp_enqueue_scripts', 'mytheme_scripts' );
-
-function enqueue_google_fonts_bbh_bogle() {
-    // 1. preconnect 연결
-    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . PHP_EOL;
-    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . PHP_EOL;
-
-    // 2. 구글 폰트 스타일시트 로드
-    wp_enqueue_style( 'google-font-bbh-bogle', 'https://fonts.googleapis.com/css2?family=BBH+Bogle&display=swap', array() );
-}
-add_action( 'wp_enqueue_scripts', 'enqueue_google_fonts_bbh_bogle' );
+add_action( 'wp_enqueue_scripts', 'my_journal_scripts' );
