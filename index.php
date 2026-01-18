@@ -42,7 +42,7 @@ $sub_posts = $sub_query->posts;
         else : 
     ?>
     <section class="section-main">
-        <div class="main-post-wrapper">
+        <div class="main-post">
             <div class="main-title">
                 <h1 class="main-title-h1">Next Main Entry</h1>
                 <p class="excerpt">새로운 메인 소식이 곧 업데이트될 예정입니다.</p>
@@ -67,7 +67,7 @@ $sub_posts = $sub_query->posts;
                     get_template_part('template-parts/sub-post');
                 else :
             ?>
-        <div class="sub-post empty-post">
+        <div class="sub-post">
             <div class="post-link-wrapper">
                 <div class="sub-title">
                     <h1 class="sub-title-h1">Next Journal Entry</h1>
