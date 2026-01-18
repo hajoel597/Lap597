@@ -50,7 +50,7 @@ $sub_posts = $sub_query->posts;
             </div>
             <div class="main-image">
                 <div class="no-image-box">
-                    <span class="material-symbols-outlined">pending</span>
+                    <span class="material-symbols-outlined">bid_landscape_disabled</span>
                     <p>Coming Soon</p>
                 </div>
             </div>
