@@ -37,7 +37,27 @@ $sub_posts = $sub_query->posts;
     <section class="section-main">
         <?php get_template_part('template-parts/main-post'); ?>
     </section>
+
+    <?php 
+        else : 
+    ?>
+    <section class="section-main empty-main">
+        <div class="main-post-wrapper">
+            <div class="main-title">
+                <h1 class="main-title-h1">Next Main Entry</h1>
+                <p class="excerpt">새로운 메인 소식이 곧 업데이트될 예정입니다.</p>
+                <p class="date"><?php echo date('Y.m.d'); ?></p>
+            </div>
+            <div class="main-image">
+                <div class="no-image-box">
+                    <span class="material-symbols-outlined">pending</span>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <?php endif; ?>
+
     <section class="section-sub">
         <?php 
             for ( $j = $i * 2; $j < ($i * 2) + 2; $j++ ) :
@@ -65,6 +85,7 @@ $sub_posts = $sub_query->posts;
         <?php endif; endfor;?>
     </section>
     <?php endfor; wp_reset_postdata(); ?>
+
     <div class="pagination-wrapper">
         <?php 
         echo paginate_links(array(
