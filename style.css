@@ -127,11 +127,12 @@ a {
     font-weight: 900;
     font-size: 4.5rem;
     line-height: 1.1;
-    margin: 0 0 40px 0;
-
+    margin: 0;
     letter-spacing: 0em;
     word-break: keep-all;
     display: block;
+    text-box-trim: start;
+    text-box-edge: cap alphabetic;
 }
 
 .main-title .date {
