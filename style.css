@@ -333,6 +333,15 @@ a {
         aspect-ratio: unset;
     }
 
+    .main-title {
+        aspect-ratio: unset;
+    }
+
+    .main-title .date {
+        font-size: 1rem;
+    }
+
+
 
     .section-sub {
         width: 95vw;
