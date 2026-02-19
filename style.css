@@ -67,6 +67,8 @@ a {
     text-decoration: none;
     color: inherit;
     display: contents;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .sub-post:hover {
@@ -136,6 +138,10 @@ a {
     text-box-edge: cap alphabetic;
 }
 
+.main-title-h1:hover {
+    text-decoration: underline;
+}
+
 .main-title .date {
     margin-top: auto;
     font-size: 1.5rem;
@@ -189,6 +195,10 @@ a {
     line-height: 1.1;
     letter-spacing: -0.05em;
     margin: 0;
+}
+
+.sub-title-h1:hover {
+    text-decoration: underline;
 }
 
 .sub-title .date {
