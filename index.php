@@ -68,17 +68,15 @@ $sub_posts = $sub_query->posts;
                 else :
             ?>
         <div class="sub-post">
-            <div class="post-link-wrapper">
-                <div class="sub-title">
-                    <h1 class="sub-title-h1">Next Journal Entry</h1>
-                    <p class="excerpt">새로운 기록이 곧 업데이트될 예정입니다.</p>
-                    <p class="date"><?php echo date('Y.m.d'); ?></p>
-                </div>
-                <div class="sub-image">
-                    <div class="no-image-box">
-                        <span class="material-symbols-outlined">bid_landscape_disabled</span>
-                        <p>Coming Soon</p>
-                    </div>
+            <div class="sub-title">
+                <h1 class="sub-title-h1">Next Journal Entry</h1>
+                <p class="excerpt">새로운 기록이 곧 업데이트될 예정입니다.</p>
+                <p class="date"><?php echo date('Y.m.d'); ?></p>
+            </div>
+            <div class="sub-image">
+                <div class="no-image-box">
+                    <span class="material-symbols-outlined">bid_landscape_disabled</span>
+                    <p>Coming Soon</p>
                 </div>
             </div>
         </div>
