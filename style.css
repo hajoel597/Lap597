@@ -142,7 +142,7 @@ a {
 
 .main-title-h1:hover {
     text-decoration: underline;
-    text-underline-offset: 10px;
+    text-underline-offset: 3px;
 }
 
 .main-title .date {
@@ -202,7 +202,7 @@ a {
 
 .sub-title-h1:hover {
     text-decoration: underline;
-    text-underline-offset: 10px
+    text-underline-offset: 1px
 }
 
 .sub-title .date {
