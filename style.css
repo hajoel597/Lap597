@@ -338,6 +338,13 @@ a {
     }
 
 
+    .section-post-header {
+        width: 95vw;
+        max-width: 600px;
+        height: auto;
+        min-height: 80vh;
+    }
+
     .post-header {
         display: flex;
         width: 100%;
