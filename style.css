@@ -337,11 +337,13 @@ a {
         aspect-ratio: unset;
     }
 
+    .main-title-h1 {
+        font-size: 36px;
+    }
+
     .main-title .date {
         font-size: 1rem;
     }
-
-
 
     .section-sub {
         width: 95vw;
