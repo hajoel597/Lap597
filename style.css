@@ -253,7 +253,7 @@ a {
 
 /*single*/
 .section-post-header {
-    width: 160vh;
+    width: 100%;
     height: 80vh;
     background-color: #ffffff;
     margin-bottom: 5vh;
