@@ -320,6 +320,7 @@ a {
 
     .main-image {
         width: 100%;
+        aspect-ratio: unset;
     }
 
 
