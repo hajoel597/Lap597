@@ -253,7 +253,7 @@ a {
 
 /*single*/
 .section-post-header {
-    width: 100%;
+    width: 90%;
     height: 80vh;
     background-color: #ffffff;
     margin-bottom: 5vh;
@@ -271,7 +271,6 @@ a {
     flex: 1;
     display: flex;
     flex-direction: column;
-    aspect-ratio: 1 / 1;
 }
 
 .post-title-h1 {
