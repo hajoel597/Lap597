@@ -375,6 +375,10 @@ a {
         aspect-ratio: unset;
     }
 
+
+    .pagination-wrapper {
+        margin: 0;
+    }
 }
 
 /*font family*/
